@@ -1,0 +1,15 @@
+TKD COACH ANDROID v63
+
+Este projeto contém a aplicação completa, as imagens e a voz Android.
+
+Para gerar o APK:
+1. Instalar Android Studio.
+2. Abrir esta pasta como projeto.
+3. Aguardar a sincronização.
+4. Selecionar Build > Build APK(s).
+5. O APK será criado em app\build\outputs\apk\debug\app-debug.apk.
+
+O projeto não necessita de Capacitor nem de ligação a um servidor para os exercícios.
+
+A chave ElevenLabs é introduzida dentro da aplicação e fica guardada apenas no dispositivo.
+Não coloque chaves, passwords, keystores ou ficheiros de assinatura no GitHub.

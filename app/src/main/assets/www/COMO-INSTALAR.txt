@@ -1,0 +1,14 @@
+TKD COACH — INSTALAR NO TELEMÓVEL
+
+ANDROID (Chrome)
+1. Abra o endereço da app.
+2. Toque no menu ⋮.
+3. Escolha “Instalar aplicação” ou “Adicionar ao ecrã principal”.
+
+iPHONE (Safari)
+1. Abra o endereço da app no Safari.
+2. Toque em Partilhar.
+3. Escolha “Adicionar ao ecrã principal”.
+
+Depois da primeira abertura, os exercícios e fotografias ficam disponíveis offline.
+A voz local funciona sem chave. A voz ElevenLabs requer um serviço seguro configurado separadamente.

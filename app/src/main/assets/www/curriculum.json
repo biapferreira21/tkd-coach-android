@@ -1,0 +1,800 @@
+{
+  "version": "v39-expanded-verified-techniques",
+  "currentBelt": "green",
+  "sourceNote": "Fotografias reais associadas por nome técnico a galerias identificadas; confirmar detalhes de execução com o instrutor.",
+  "classificationPolicy": {
+    "current_focus": "Técnicas adequadas ao foco principal do cinto verde e às Taegeuk 1–5.",
+    "preview": "Técnicas apresentadas como prévia técnica ou treino de baixa intensidade.",
+    "reference_only": "Conteúdo avançado mantido para consulta."
+  },
+  "techniques": [
+    {
+      "koreanName": "Moa seogi",
+      "portugueseName": "posição fechada",
+      "category": "seogi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Pés juntos e postura vertical."
+    },
+    {
+      "koreanName": "Narani seogi",
+      "portugueseName": "posição paralela",
+      "category": "seogi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Pés paralelos e peso equilibrado."
+    },
+    {
+      "koreanName": "Ap seogi",
+      "portugueseName": "posição curta à frente",
+      "category": "seogi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Base natural usada nas primeiras poomsae."
+    },
+    {
+      "koreanName": "Ap kubi",
+      "portugueseName": "posição longa à frente",
+      "category": "seogi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Joelho da frente fletido e perna de trás estável."
+    },
+    {
+      "koreanName": "Dwit kubi",
+      "portugueseName": "posição recuada",
+      "category": "seogi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Maior parte do peso na perna de trás."
+    },
+    {
+      "koreanName": "Juchum seogi",
+      "portugueseName": "posição de cavalo",
+      "category": "seogi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Pés paralelos, joelhos abertos e centro baixo."
+    },
+    {
+      "koreanName": "Beom seogi",
+      "portugueseName": "posição de tigre",
+      "category": "seogi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Base curta, leve e preparada para transição."
+    },
+    {
+      "koreanName": "Kkoa seogi",
+      "portugueseName": "posição cruzada",
+      "category": "seogi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Pernas cruzadas com controlo do centro."
+    },
+    {
+      "koreanName": "Oreun seogi",
+      "portugueseName": "posição direita",
+      "category": "seogi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Orientação específica da base para a direita."
+    },
+    {
+      "koreanName": "Wen seogi",
+      "portugueseName": "posição esquerda",
+      "category": "seogi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Orientação específica da base para a esquerda."
+    },
+    {
+      "koreanName": "Dwit kkoa seogi",
+      "portugueseName": "posição cruzada por trás",
+      "category": "seogi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Usada em transições e poomsae avançadas."
+    },
+    {
+      "koreanName": "Hakdari seogi",
+      "portugueseName": "posição de grou numa perna",
+      "category": "seogi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Equilíbrio unilateral com joelho elevado."
+    },
+    {
+      "koreanName": "Arae makki",
+      "portugueseName": "defesa baixa",
+      "category": "makki",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Protege a zona inferior com trajetória definida."
+    },
+    {
+      "koreanName": "Momtong an makki",
+      "portugueseName": "defesa média para dentro",
+      "category": "makki",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Antebraço entra em direção ao centro."
+    },
+    {
+      "koreanName": "Momtong bakkat makki",
+      "portugueseName": "defesa média para fora",
+      "category": "makki",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Antebraço termina fora da linha central."
+    },
+    {
+      "koreanName": "Eolgul makki",
+      "portugueseName": "defesa alta",
+      "category": "makki",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Protege a cabeça sem levantar o ombro."
+    },
+    {
+      "koreanName": "Sonnal momtong makki",
+      "portugueseName": "defesa média com mão aberta",
+      "category": "makki",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Lâmina da mão ativa e base estável."
+    },
+    {
+      "koreanName": "Hansonnal momtong bakkat makki",
+      "portugueseName": "defesa exterior com uma mão aberta",
+      "category": "makki",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Uma mão executa enquanto a outra recolhe."
+    },
+    {
+      "koreanName": "Batangson momtong makki",
+      "portugueseName": "defesa média com palma",
+      "category": "makki",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Usa a base da palma para desviar."
+    },
+    {
+      "koreanName": "Hecheo makgi",
+      "portugueseName": "defesa de abertura",
+      "category": "makki",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Dois braços abrem em sentidos opostos."
+    },
+    {
+      "koreanName": "Geodeureo arae makki",
+      "portugueseName": "defesa baixa assistida",
+      "category": "makki",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Uma mão apoia a técnica principal."
+    },
+    {
+      "koreanName": "Geodeureo momtong makki",
+      "portugueseName": "defesa média assistida",
+      "category": "makki",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Defesa reforçada por mão de apoio."
+    },
+    {
+      "koreanName": "An palmok momtong makki",
+      "portugueseName": "defesa média com interior do antebraço",
+      "category": "makki",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Define a superfície de contacto do antebraço."
+    },
+    {
+      "koreanName": "Sonnal bitureo makki",
+      "portugueseName": "defesa torcida com mão aberta",
+      "category": "makki",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Técnica de direção oblíqua e controlo fino."
+    },
+    {
+      "koreanName": "Momtong jireugi",
+      "portugueseName": "soco médio",
+      "category": "son",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Soco direto à zona média com rotação final."
+    },
+    {
+      "koreanName": "Eolgul jireugi",
+      "portugueseName": "soco alto",
+      "category": "son",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Soco direto à zona alta mantendo o ombro baixo."
+    },
+    {
+      "koreanName": "Arae jireugi",
+      "portugueseName": "soco baixo",
+      "category": "son",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "verified_photo",
+      "notes": "Soco direto à zona inferior."
+    },
+    {
+      "koreanName": "Sonnal mok chigi",
+      "portugueseName": "ataque ao pescoço com mão aberta",
+      "category": "son",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Lâmina da mão e trajetória controlada."
+    },
+    {
+      "koreanName": "Deung jumeok ap chigi",
+      "portugueseName": "ataque frontal com costas do punho",
+      "category": "son",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Trajetória curta e recolha rápida."
+    },
+    {
+      "koreanName": "Me jumeok naeryo chigi",
+      "portugueseName": "ataque descendente com punho martelo",
+      "category": "son",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Golpe vertical sem perder a postura."
+    },
+    {
+      "koreanName": "Palkup chigi",
+      "portugueseName": "ataque de cotovelo",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Técnica curta com rotação do tronco."
+    },
+    {
+      "koreanName": "Batangson momtong an chigi",
+      "portugueseName": "ataque interior com palma",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Palma entra com controlo à zona média."
+    },
+    {
+      "koreanName": "Pyonsonkkeut sewo jireugi",
+      "portugueseName": "ataque vertical com pontas dos dedos",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Dedos unidos e punho alinhado."
+    },
+    {
+      "koreanName": "Jecho jireugi",
+      "portugueseName": "soco invertido",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Punho termina com a palma voltada para cima."
+    },
+    {
+      "koreanName": "Pyonsonkkeut geodeureo sewo jjireugi",
+      "portugueseName": "soco assistido",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "A segunda mão apoia a ação principal."
+    },
+    {
+      "koreanName": "Pyojeok jireugi",
+      "portugueseName": "soco a alvo",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Ataque dirigido a uma mão-alvo."
+    },
+    {
+      "koreanName": "Dangkyo teok jireugi",
+      "portugueseName": "soco ao queixo puxando o alvo",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Coordena puxar e atacar."
+    },
+    {
+      "koreanName": "Murup chigi",
+      "portugueseName": "ataque de joelho",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Joelho sobe em linha com controlo da guarda."
+    },
+    {
+      "koreanName": "Agwison mok chigi",
+      "portugueseName": "ataque ao pescoço com mão em arco",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Técnica avançada de mão e precisão."
+    },
+    {
+      "koreanName": "Bam jumeok jireugi",
+      "portugueseName": "soco com nó dos dedos",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Superfície de contacto pequena e precisa."
+    },
+    {
+      "koreanName": "Ap chagi",
+      "portugueseName": "pontapé frontal",
+      "category": "chagi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Câmara, extensão e recolha em linha."
+    },
+    {
+      "koreanName": "Dollyo chagi",
+      "portugueseName": "pontapé circular",
+      "category": "chagi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Pivota o pé de apoio e roda a anca."
+    },
+    {
+      "koreanName": "Yop chagi",
+      "portugueseName": "pontapé lateral",
+      "category": "chagi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Empurra o alvo com o calcanhar."
+    },
+    {
+      "koreanName": "Dwi chagi",
+      "portugueseName": "pontapé para trás",
+      "category": "chagi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Olha sobre o ombro e chuta em linha."
+    },
+    {
+      "koreanName": "Naeryo chagi",
+      "portugueseName": "pontapé descendente",
+      "category": "chagi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Sobe controlado e desce sem bloquear o joelho."
+    },
+    {
+      "koreanName": "Mireo chagi",
+      "portugueseName": "pontapé de empurrar",
+      "category": "chagi",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Extensão para afastar mantendo equilíbrio."
+    },
+    {
+      "koreanName": "Bandae dollyo chagi",
+      "portugueseName": "pontapé circular reverso",
+      "category": "chagi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Rotação completa e contacto controlado."
+    },
+    {
+      "koreanName": "Huryeo chagi",
+      "portugueseName": "pontapé em chicote",
+      "category": "chagi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Trajetória de gancho com recolha rápida."
+    },
+    {
+      "koreanName": "An chagi",
+      "portugueseName": "pontapé circular para dentro",
+      "category": "chagi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Perna descreve arco de fora para dentro."
+    },
+    {
+      "koreanName": "Bakkat chagi",
+      "portugueseName": "pontapé circular para fora",
+      "category": "chagi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Perna descreve arco de dentro para fora."
+    },
+    {
+      "koreanName": "Bitureo chagi",
+      "portugueseName": "pontapé torcido",
+      "category": "chagi",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Trabalha ângulo de anca e direção oblíqua."
+    },
+    {
+      "koreanName": "Twio ap chagi",
+      "portugueseName": "pontapé frontal com salto",
+      "category": "chagi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Elevação e aterragem controladas."
+    },
+    {
+      "koreanName": "Twio dollyo chagi",
+      "portugueseName": "pontapé circular com salto",
+      "category": "chagi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Pivota no ar e aterra com equilíbrio."
+    },
+    {
+      "koreanName": "Twio yop chagi",
+      "portugueseName": "pontapé lateral com salto",
+      "category": "chagi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Linha lateral e controlo da aterragem."
+    },
+    {
+      "koreanName": "Twio dwi chagi",
+      "portugueseName": "pontapé para trás com salto",
+      "category": "chagi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Rotação curta, visão e extensão em linha."
+    },
+    {
+      "koreanName": "Gawi chagi",
+      "portugueseName": "pontapé tesoura",
+      "category": "chagi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Coordenação de duas pernas no ar."
+    },
+    {
+      "koreanName": "Narae chagi",
+      "portugueseName": "pontapés circulares alternados no ar",
+      "category": "chagi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Coordenação rápida de ambos os lados."
+    },
+    {
+      "koreanName": "540 dollyo chagi",
+      "portugueseName": "pontapé circular com rotação 540°",
+      "category": "chagi",
+      "technicalLevel": "dan",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Técnica acrobática para treino supervisionado."
+    },
+    {
+      "koreanName": "Gyeotdari seogi",
+      "portugueseName": "posição assistida",
+      "category": "seogi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Pés próximos, joelhos flexionados e peso controlado."
+    },
+    {
+      "koreanName": "Ogeum seogi",
+      "portugueseName": "posição com joelhos cruzados",
+      "category": "seogi",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Posição especial com controlo rigoroso do equilíbrio."
+    },
+    {
+      "koreanName": "Gawi makgi",
+      "portugueseName": "defesa tesoura",
+      "category": "makki",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Uma defesa média e uma defesa baixa executadas simultaneamente."
+    },
+    {
+      "koreanName": "Nulleo makgi",
+      "portugueseName": "defesa pressionada",
+      "category": "makki",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "A palma ou antebraço pressiona a linha de ataque para baixo."
+    },
+    {
+      "koreanName": "Oesanteul makgi",
+      "portugueseName": "meia defesa montanha",
+      "category": "makki",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Defesas simultâneas em níveis diferentes."
+    },
+    {
+      "koreanName": "Geumgang makgi",
+      "portugueseName": "defesa diamante",
+      "category": "makki",
+      "technicalLevel": "dan",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Combina defesa alta com defesa lateral ou baixa."
+    },
+    {
+      "koreanName": "Hwangso makgi",
+      "portugueseName": "defesa chifres de touro",
+      "category": "makki",
+      "technicalLevel": "dan",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Dois antebraços protegem a cabeça em ângulo."
+    },
+    {
+      "koreanName": "Danggyeo jireugi",
+      "portugueseName": "soco com puxão",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Uma mão puxa e a outra ataca em trajetória curta."
+    },
+    {
+      "koreanName": "Dollyeo jireugi",
+      "portugueseName": "soco circular",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "O punho percorre uma trajetória circular curta."
+    },
+    {
+      "koreanName": "Chi jireugi",
+      "portugueseName": "soco ascendente",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Punho sobe verticalmente em direção ao queixo."
+    },
+    {
+      "koreanName": "Sewo jireugi",
+      "portugueseName": "soco vertical",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Punho termina vertical sem perder o alinhamento do pulso."
+    },
+    {
+      "koreanName": "Geodeureo chigi",
+      "portugueseName": "golpe assistido",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "A segunda mão apoia o golpe principal."
+    },
+    {
+      "koreanName": "Bakkat chigi",
+      "portugueseName": "golpe exterior",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Golpe percorre a linha de dentro para fora."
+    },
+    {
+      "koreanName": "Pyojeok chigi",
+      "portugueseName": "golpe a alvo",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Golpe termina numa mão-alvo claramente posicionada."
+    },
+    {
+      "koreanName": "Sonnal geodeureo makgi → pyonsonkkeut geodeureo sewo jjireugi",
+      "portugueseName": "defesa assistida e ataque de dedos",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Combinação de Taegeuk Sa Jang: controlar e responder em linha."
+    },
+    {
+      "koreanName": "Momtong bakkat makgi → ap chagi → momtong jireugi",
+      "portugueseName": "defesa, pontapé frontal e soco",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Combinação linear com regresso à base antes do soco."
+    },
+    {
+      "koreanName": "Pyojeok an chagi → palkup pyojeok chigi",
+      "portugueseName": "pontapé a alvo e cotovelo a alvo",
+      "category": "son",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "verified_photo",
+      "notes": "Mantém a mão-alvo estável e controla a distância."
+    },
+    {
+      "koreanName": "An palmok momtong makgi → momtong baro jireugi",
+      "portugueseName": "defesa média e contra-ataque",
+      "category": "son",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "verified_photo",
+      "notes": "Defesa curta seguida de resposta direta."
+    },
+    {
+      "koreanName": "Taegeuk Il Jang",
+      "portugueseName": "primeira forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Keon; início da progressão Taegeuk."
+    },
+    {
+      "koreanName": "Taegeuk I Jang",
+      "portugueseName": "segunda forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Progressão de bases, defesas e ataques."
+    },
+    {
+      "koreanName": "Taegeuk Sam Jang",
+      "portugueseName": "terceira forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "fundamental",
+      "curriculumLevel": "current_focus",
+      "mediaStatus": "validated_existing",
+      "notes": "Integra novas combinações e ritmo."
+    },
+    {
+      "koreanName": "Taegeuk Sa Jang",
+      "portugueseName": "quarta forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Introduz técnicas e transições mais complexas."
+    },
+    {
+      "koreanName": "Taegeuk Oh Jang",
+      "portugueseName": "quinta forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "intermediate",
+      "curriculumLevel": "preview",
+      "mediaStatus": "validated_existing",
+      "notes": "Foco em estabilidade e potência coordenada."
+    },
+    {
+      "koreanName": "Taegeuk Yuk Jang",
+      "portugueseName": "sexta forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Amplia repertório e controlo de direção."
+    },
+    {
+      "koreanName": "Taegeuk Chil Jang",
+      "portugueseName": "sétima forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Exige maior variedade de bases e técnicas."
+    },
+    {
+      "koreanName": "Taegeuk Pal Jang",
+      "portugueseName": "oitava forma Taegeuk",
+      "category": "poomsae",
+      "technicalLevel": "advanced",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Última Taegeuk antes da progressão de Dan."
+    },
+    {
+      "koreanName": "Koryo",
+      "portugueseName": "primeira poomsae de Dan",
+      "category": "poomsae",
+      "technicalLevel": "dan",
+      "curriculumLevel": "reference_only",
+      "mediaStatus": "validated_existing",
+      "notes": "Poomsae associada à entrada no percurso de cinto negro."
+    },
+    { "koreanName": "Bada makgi", "portugueseName": "defesa de absorção", "category": "makki", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Amortece a força recebida com controlo." },
+    { "koreanName": "Naeryeo makgi", "portugueseName": "defesa descendente", "category": "makki", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Desvia o ataque de cima para baixo." },
+    { "koreanName": "Santeul makgi", "portugueseName": "defesa montanha", "category": "makki", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Proteção bilateral da cabeça." },
+    { "koreanName": "Ollyeo makgi", "portugueseName": "defesa ascendente", "category": "makki", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Interceta numa trajetória ascendente." },
+    { "koreanName": "Cha makgi", "portugueseName": "defesa com a perna ou o pé", "category": "makki", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Defesa com membro inferior e controlo de distância." },
+    { "koreanName": "Yeom makgi", "portugueseName": "defesa lateral", "category": "makki", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Protege contra um ataque lateral." },
+    { "koreanName": "Chye makgi", "portugueseName": "defesa por impacto", "category": "makki", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Encontra a linha de ataque com mão ou antebraço." },
+    { "koreanName": "Digeutja jireugi", "portugueseName": "soco duplo em forma de ㄷ", "category": "son", "technicalLevel": "dan", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Dois socos em níveis distintos." },
+    { "koreanName": "Yeop jireugi", "portugueseName": "soco lateral", "category": "son", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Soco reto dirigido para o lado." },
+    { "koreanName": "Naeryeo jireugi", "portugueseName": "soco descendente", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Soco vertical dirigido a um alvo baixo." },
+    { "koreanName": "Geumgang jireugi", "portugueseName": "defesa alta e soco simultâneos", "category": "son", "technicalLevel": "dan", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Defesa e ataque coordenados." },
+    { "koreanName": "Dwi jireugi", "portugueseName": "soco para trás", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Soco para um alvo atrás do praticante." },
+    { "koreanName": "Chetdari jireugi", "portugueseName": "soco duplo em forquilha", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Dois punhos em linhas divergentes." },
+    { "koreanName": "Dollyeo chigi", "portugueseName": "golpe circular", "category": "son", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe produzido pela rotação do corpo." },
+    { "koreanName": "Biteureo chigi", "portugueseName": "golpe com torção", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe com torção coordenada do tronco." },
+    { "koreanName": "Yeop chigi", "portugueseName": "golpe lateral", "category": "son", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe para um alvo ao lado." },
+    { "koreanName": "Naeryeo chigi", "portugueseName": "golpe descendente", "category": "son", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe de cima para baixo." },
+    { "koreanName": "Dwi chigi", "portugueseName": "golpe para trás", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe dirigido para trás." },
+    { "koreanName": "An chigi", "portugueseName": "golpe para dentro", "category": "son", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Trajetória de fora para dentro." },
+    { "koreanName": "Ollyeo chigi", "portugueseName": "golpe ascendente", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe numa trajetória ascendente." },
+    { "koreanName": "Danggyeo chigi", "portugueseName": "golpe com puxão", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Puxa e golpeia de forma sincronizada." },
+    { "koreanName": "Ap chigi", "portugueseName": "golpe frontal", "category": "son", "technicalLevel": "intermediate", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Golpe curto dirigido à frente." },
+    { "koreanName": "Jebipum chigi", "portugueseName": "golpe em forma de andorinha", "category": "son", "technicalLevel": "advanced", "curriculumLevel": "preview", "mediaStatus": "verified_photo", "notes": "Proteção alta e golpe frontal coordenados." }
+  ]
+}

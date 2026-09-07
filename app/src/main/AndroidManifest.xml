@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="app.alphavote.tkdcoach">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application android:allowBackup="true" android:icon="@drawable/tkd_launcher_v51" android:label="TKD Coach Nova" android:supportsRtl="true" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+        <activity android:name="com.tkdcoach.mobile.MainActivity" android:configChanges="orientation|screenSize|keyboardHidden" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

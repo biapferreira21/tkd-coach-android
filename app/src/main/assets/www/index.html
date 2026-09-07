@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#234a38" />
+  <meta name="description" content="Treinador de Taekwondo com planos reutilizáveis, currículo técnico em coreano e acompanhamento de progresso até cinto negro." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="TKD Coach" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>TKD Coach — Android v63.0 · Poomsae 1–8 e treino baralhado</title>
+</head>
+<body>
+  <div class="comic-bg"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand brand-button" data-go="setup" aria-label="Ir para o plano">
+        <div class="brand-mark" aria-hidden="true"><img class="brand-logo-image" src="assets/art/tkd-emblem-v51.png" alt="" /></div>
+        <div>
+          <h1>TKD Coach</h1>
+        </div>
+      </button>
+      <button id="installBtn" class="ghost-btn" hidden>Instalar</button>
+    </header>
+
+    <main>
+      <section id="setupView" class="view active" aria-label="Treinos">
+        <section class="roadmap-card comic-card">
+          <div class="section-heading compact">
+            <div><h2>Escolher treino</h2></div>
+          </div>
+
+          <div class="training-mode-stack">
+            <details id="existingSessionsDetails" class="training-mode-panel existing-sessions-panel">
+              <summary>
+                <span class="mode-title"><span class="mode-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 16c2-1 3-3 3-5l2 2 5-4M10 8l2 3M6 18c4-1 8-1 12 0"/></svg></span><span><strong>Treinos existentes</strong><small>13 treinos · 90 min.</small></span></span>
+                <span class="mode-chevron" aria-hidden="true">⌄</span>
+              </summary>
+              <div id="sessionGrid" class="session-grid"></div>
+            </details>
+
+            <details id="createdSessionsDetails" class="training-mode-panel existing-sessions-panel created-sessions-panel">
+              <summary>
+                <span class="mode-title"><span class="mode-icon mode-icon-created" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4h10l2 2v14H6z"/><path d="M9 9h6M9 13h6M9 17h4"/><circle cx="17.5" cy="6.5" r="3.5"/><path d="M17.5 4.8v2l1.4.9"/></svg></span><span><strong>Treinos criados</strong><small id="createdSessionCount">Nenhum guardado.</small></span></span>
+                <span class="mode-chevron" aria-hidden="true">⌄</span>
+              </summary>
+              <div id="customSessionGrid" class="session-grid generated-session-grid"></div>
+            </details>
+
+            <details id="poomsaeSessionsDetails" class="training-mode-panel existing-sessions-panel poomsae-sessions-panel">
+              <summary>
+                <span class="mode-title"><span class="mode-icon mode-icon-poomsae" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 17h14"/><circle cx="12" cy="7" r="2"/><path d="m12 9-4 4m4-4 4 4m-4 1-3 5m3-5 3 5"/></svg></span><span><strong>Poomsae passo a passo</strong><small>Taegeuk 1–8 + Koryo · golpe a golpe</small></span></span>
+                <span class="mode-chevron" aria-hidden="true">⌄</span>
+              </summary>
+              <div id="poomsaeSessionGrid" class="session-grid poomsae-session-grid"></div>
+            </details>
+
+            <section class="training-mode-panel random-mode-panel" aria-labelledby="randomModeTitle">
+              <div class="mode-panel-heading">
+                <div class="mode-title"><span class="mode-icon mode-icon-random" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h3c5 0 5 10 10 10h3"/><path d="m17 14 3 3-3 3M4 17h3c2.5 0 3.8-2.4 5-5M17 4l3 3-3 3"/></svg></span><span><strong id="randomModeTitle">Treino aleatório</strong><small>45 exercícios · 90 min.</small></span></div>
+                <button id="randomSessionBtn" class="random-session-btn" type="button">Criar aleatório</button>
+              </div>
+              <p id="randomSessionStatus" class="random-session-status" aria-live="polite"></p>
+              <div id="randomSessionGrid" class="session-grid generated-session-grid"></div>
+            </section>
+
+          </div>
+        </section>
+
+        <section id="sessionPreviewCard" class="session-preview comic-card">
+          <div class="session-preview-header">
+            <div>
+              <span id="previewWeek" class="eyebrow">Semana 1</span>
+              <h3 id="previewTitle">Treino 1</h3>
+            </div>
+            <div class="preview-duration"><strong id="previewDuration">90</strong><span>min</span></div>
+          </div>
+          <div id="previewCoverage" class="coverage-chips"></div>
+          <div id="sessionBlockPreview" class="session-block-preview"></div>
+        </section>
+
+        <section class="settings-card comic-card" aria-label="Preparação do treino">
+          <details id="trainingOptionsDetails" class="training-options-details">
+            <summary><span>Som e instrutor</span><small>Opcional</small></summary>
+            <div class="training-options-body">
+
+          <div class="setting-row">
+            <label for="energySelect">Energia</label>
+            <select id="energySelect">
+              <option value="5">5 — Excelente</option>
+              <option value="4" selected>4 — Boa</option>
+              <option value="3">3 — Normal</option>
+              <option value="2">2 — Baixa</option>
+              <option value="1">1 — Muito baixa</option>
+            </select>
+          </div>
+          <div class="setting-row switch-row">
+            <div>
+              <span class="setting-title">Sinais sonoros</span>
+            </div>
+            <label class="switch"><input id="whistleEnabled" type="checkbox" checked /><span class="slider"></span></label>
+          </div>
+          <div class="setting-row switch-row">
+            <div>
+              <span class="setting-title">Vibração</span>
+            </div>
+            <label class="switch"><input id="vibrationEnabled" type="checkbox" checked /><span class="slider"></span></label>
+          </div>
+          <div class="setting-row voice-setting-row">
+            <div>
+              <span class="setting-title">Voz do treinador</span>
+              <small id="voiceHelpText" class="sr-only">Voz do treinador</small>
+            </div>
+            <div class="voice-controls-inline">
+              <label class="switch" aria-label="Ativar voz curta"><input id="voiceEnabled" type="checkbox" /><span class="slider"></span></label>
+              <label class="sr-only" for="voiceSelect">Escolher voz</label>
+              <select id="voiceSelect"><option value="">A procurar vozes portuguesas…</option></select>
+              <button id="testVoiceBtn" class="text-btn" type="button">Testar voz</button>
+            </div>
+          </div>
+          <div class="setting-row elevenlabs-setting-row">
+            <div>
+              <span class="setting-title">Instrutor</span>
+            </div>
+            <div class="elevenlabs-controls">
+              <label class="sr-only" for="voiceProvider">Motor de voz</label>
+              <select id="voiceProvider"><option value="elevenlabs">ElevenLabs — recomendada</option><option value="local">Voz local — reserva</option></select>
+              <label for="elevenApiKey" class="android-eleven-key-label">Chave ElevenLabs</label>
+              <input id="elevenApiKey" type="password" autocomplete="off" placeholder="Cole aqui a chave ElevenLabs" aria-label="Chave API ElevenLabs" />
+              <input id="elevenProxyUrl" type="url" value="http://127.0.0.1:8787" aria-label="Endereço do servidor ElevenLabs" hidden />
+              <button id="connectElevenLabsBtn" class="text-btn" type="button">Ligar</button>
+              <label class="sr-only" for="elevenVoiceSelect">Voz ElevenLabs</label>
+              <select id="elevenVoiceSelect" disabled><option value="">Introduz a chave e toca em Ligar</option></select>
+              <button id="testElevenLabsBtn" class="text-btn" type="button">Testar instrutor</button>
+              <span id="elevenVoiceStatus" class="voice-status" aria-live="polite">ElevenLabs ainda não configurada.</span>
+            </div>
+          </div>
+            </div>
+          </details>
+          <button id="startBtn" class="primary-btn start-workout-btn">Começar treino</button>
+        </section>
+      </section>
+
+      <section id="customView" class="view" aria-labelledby="customBuilderTitle">
+        <section class="custom-builder-hero comic-card">
+          <button class="icon-btn custom-builder-back" type="button" data-go="setup" aria-label="Voltar aos treinos">←</button>
+          <div><span class="eyebrow">Editor de treino</span><h2 id="customBuilderTitle">Criar treino</h2><p>Escolhe os exercícios e define o tempo de cada um.</p></div>
+        </section>
+
+        <form id="customWorkoutForm" class="custom-builder-card comic-card">
+          <label class="custom-name-field">Nome
+            <input id="customWorkoutName" type="text" maxlength="50" placeholder="Ex.: Força e pontapés" autocomplete="off" />
+          </label>
+          <div class="custom-builder-filters">
+            <label>Nível técnico
+              <select id="customDifficultySelect">
+                <option value="beginner">Iniciante</option>
+                <option value="intermediate" selected>Intermédio</option>
+                <option value="advanced">Avançado</option>
+              </select>
+            </label>
+            <label>Pesquisar
+              <input id="customExerciseSearch" type="search" placeholder="Ex.: prancha, cardio, dollyo…" />
+            </label>
+            <label>Descanso entre exercícios
+              <select id="customRestSeconds">
+                <option value="0">Sem descanso</option>
+                <option value="10">10 segundos</option>
+                <option value="15">15 segundos</option>
+                <option value="20" selected>20 segundos</option>
+                <option value="30">30 segundos</option>
+                <option value="45">45 segundos</option>
+                <option value="60">60 segundos</option>
+              </select>
+            </label>
+          </div>
+          <p id="difficultyDescription" class="difficulty-description"></p>
+          <div class="custom-builder-summary" aria-live="polite">
+            <span><strong id="customExerciseCounter">0</strong> etapas</span>
+            <span id="customLoopSummary">Sem loops</span>
+            <span><strong id="customTotalTime">00:00</strong> total</span>
+          </div>
+          <div class="picker-actions custom-builder-actions">
+            <button id="selectVisibleExercisesBtn" type="button" class="text-btn">Selecionar visíveis</button>
+            <button id="clearExercisesBtn" type="button" class="text-btn">Limpar</button>
+          </div>
+          <section id="customOrderPanel" class="custom-order-panel" aria-labelledby="customOrderTitle" hidden>
+            <div class="custom-order-heading">
+              <div><span class="eyebrow">Sequência</span><h3 id="customOrderTitle">Ordem do treino</h3></div>
+              <small>Arrasta ou usa as setas.</small>
+            </div>
+            <div id="customOrderList" class="custom-order-list"></div>
+            <div class="custom-loop-toolbar">
+              <button id="openCustomLoopBtn" class="text-btn" type="button">＋ Criar loop</button>
+              <small>Escolhe um grupo e quantas voltas queres fazer.</small>
+            </div>
+            <div id="customLoopList" class="custom-loop-list" aria-live="polite"></div>
+            <section id="customLoopBuilder" class="custom-loop-builder" aria-labelledby="customLoopTitle" hidden>
+              <div class="custom-loop-builder-heading">
+                <div><span class="eyebrow">Grupo repetível</span><h4 id="customLoopTitle">Novo loop</h4></div>
+                <label>Voltas
+                  <input id="customLoopRepetitions" type="number" min="2" max="20" step="1" value="3" inputmode="numeric" />
+                </label>
+              </div>
+              <p>Marca os exercícios. Dentro do loop seguem a ordem atual do treino.</p>
+              <div id="customLoopExerciseList" class="custom-loop-exercise-list"></div>
+              <div class="custom-loop-builder-actions">
+                <button id="addCustomLoopBtn" class="primary-btn" type="button">Adicionar loop</button>
+                <button id="cancelCustomLoopBtn" class="text-btn" type="button">Cancelar</button>
+              </div>
+              <p id="customLoopStatus" class="random-session-status" aria-live="polite"></p>
+            </section>
+          </section>
+          <div id="customExerciseList" class="custom-exercise-list"></div>
+          <div class="custom-save-actions">
+            <button id="createCustomWorkoutBtn" class="primary-btn custom-create-btn" type="submit">Guardar treino</button>
+            <button id="cancelCustomEditBtn" class="text-btn" type="button" hidden>Cancelar edição</button>
+          </div>
+          <p id="customWorkoutStatus" class="random-session-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="curriculumView" class="view" aria-labelledby="createdHistoryTitle">
+        <section class="history-hero comic-card">
+          <span class="eyebrow">A tua coleção</span>
+          <h2 id="createdHistoryTitle">Histórico de treinos</h2>
+          <p>Repete, renomeia ou elimina os treinos que criaste.</p>
+        </section>
+        <section class="created-history-card comic-card">
+          <div class="section-heading compact"><div><h3>Treinos guardados</h3><p id="historyCreatedCount">Nenhum treino guardado.</p></div><button class="primary-btn history-create-btn" type="button" data-go="custom">Criar treino</button></div>
+          <div id="createdWorkoutHistoryGrid" class="session-grid generated-session-grid history-session-grid"></div>
+        </section>
+      </section>
+
+
+      <section id="auditView" class="view" aria-labelledby="auditTitle">
+        <section class="audit-hero comic-card exercise-catalog-hero">
+          <span class="eyebrow">Biblioteca completa</span>
+          <h2 id="auditTitle">Exercícios</h2>
+          <p>Técnicas de Taekwondo e preparação física, organizadas num só lugar.</p>
+        </section>
+        <details class="library-section comic-card" open>
+          <summary><span><strong>Técnicas de Taekwondo</strong><small>Bases, mãos, pontapés e poomsae</small></span><span class="library-chevron">⌄</span></summary>
+          <div class="library-section-body">
+            <section class="curriculum-tools">
+              <label class="search-field"><span>Pesquisar técnica</span><input id="curriculumSearch" type="search" placeholder="Ex.: dollyo chagi, makki, Taegeuk…" /></label>
+              <label>Nível<select id="levelFilter"><option value="all">Todos os níveis</option><option value="fundamental">Fundamentos</option><option value="intermediate">Intermédio</option><option value="advanced">Avançado</option><option value="dan">1.º Dan</option></select></label>
+              <label>Estado<select id="statusFilter"><option value="all">Todos</option><option value="not_started">Por iniciar</option><option value="learning">A aprender</option><option value="solid">Sólida</option><option value="mastered">Dominada</option></select></label>
+            </section>
+            <div class="source-strip"><span>Fontes: Kukkiwon/WT.</span><a href="https://www.kukkiwon.or.kr/eng/board/list?boardManagementNo=55&menuLevel=3&menuNo=72" target="_blank" rel="noreferrer">Poomsae oficiais</a><a href="https://wta.kukkiwon.or.kr/en/curriculums/list?lang=en&menuid=1101&topMenuid=103" target="_blank" rel="noreferrer">Currículo WTA</a></div>
+            <div id="categoryTabs" class="category-tabs" role="tablist"></div>
+            <div id="curriculumStats" class="curriculum-stats"></div>
+            <div id="techniqueGrid" class="technique-grid"></div>
+          </div>
+        </details>
+        <details class="library-section comic-card" open>
+          <summary><span><strong>Exercícios e combate</strong><small>Boxe · Kickboxing · Cardio · Força · Alongamentos · Circuitos</small></span><span class="library-chevron">⌄</span></summary>
+          <div class="library-section-body">
+            <section class="audit-tools" aria-label="Pesquisa e filtros dos exercícios">
+              <label class="catalog-search"><span>Pesquisar exercício</span><input id="exerciseCatalogSearch" type="search" placeholder="Ex.: mobilidade, pernas, costas…" /></label>
+              <div id="auditFilters" class="audit-filters"></div><div id="auditStats" class="audit-stats"></div>
+            </section>
+            <div id="auditGrid" class="audit-grid exercise-catalog-grid"></div>
+          </div>
+        </details>
+        <details id="weightCatalogDetails" class="library-section comic-card weight-library-section">
+          <summary><span><strong>Treino com pesos</strong><small>Halteres · Kettlebells · Barra</small></span><span class="library-chevron">⌄</span></summary>
+          <div class="library-section-body">
+            <section class="audit-tools" aria-label="Pesquisa e filtros dos exercícios com pesos">
+              <label class="catalog-search"><span>Pesquisar exercício</span><input id="weightCatalogSearch" type="search" placeholder="Ex.: squat, press, row…" /></label>
+              <div id="weightEquipmentFilters" class="audit-filters"></div>
+              <div id="weightLevelFilters" class="audit-filters weight-level-filters"></div>
+              <div id="weightCatalogStats" class="audit-stats"></div>
+            </section>
+            <div id="weightCatalogGrid" class="audit-grid exercise-catalog-grid"></div>
+          </div>
+        </details>
+      </section>
+
+      <section id="progressView" class="view" aria-labelledby="progressTitle">
+        <section class="progress-hero comic-card">
+          <span class="eyebrow">Evolução</span>
+          <h2 id="progressTitle">O teu progresso técnico</h2>
+          <p>O progresso combina os treinos concluídos com o estado que marcas em cada técnica.</p>
+        </section>
+
+        <section class="progress-overview comic-card">
+          <div class="progress-ring" id="progressRing"><strong id="overallProgress">0%</strong><span>currículo</span></div>
+          <div id="progressSummaryText" class="progress-summary-text"></div>
+        </section>
+
+        <section class="category-progress-card comic-card">
+          <div class="section-heading compact"><div><span class="eyebrow">Cobertura</span><h3>Por categoria</h3></div></div>
+          <div id="categoryProgressList" class="category-progress-list"></div>
+        </section>
+
+        <section class="progress-card comic-card">
+          <div class="section-heading">
+            <div><span class="eyebrow">Histórico</span><h3>Últimos treinos</h3></div>
+            <button id="clearHistoryBtn" class="text-btn">Limpar</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+
+        <section class="progress-card comic-card">
+          <div class="section-heading compact"><div><span class="eyebrow">Revisão</span><h3>Técnicas a reforçar</h3></div></div>
+          <div id="reviewList" class="review-list"></div>
+        </section>
+      </section>
+
+      <section id="trainingView" class="view" aria-labelledby="trainingTitle">
+        <div class="training-header comic-card compact-card">
+          <button id="backBtn" class="icon-btn" aria-label="Sair do treino">←</button>
+          <div class="training-header-title">
+            <span id="trainingDay" class="eyebrow"></span>
+            <h2 id="trainingTitle">Treino</h2>
+            <p id="trainingSubline" class="training-subline"></p>
+          </div>
+          <div class="session-total-status">
+            <div class="session-exercise-status"><small>Exercício</small><strong id="headerExerciseCounter">1 / 39</strong></div>
+            <div class="session-remaining-status"><small>Falta no treino</small><div id="sessionTimer" class="session-timer">01:30:00</div></div>
+          </div>
+        </div>
+
+        <div class="block-progress" id="blockProgress" aria-label="Progresso dos blocos"></div>
+
+        <article class="exercise-card comic-card">
+          <div class="exercise-topline">
+            <span id="blockName" class="block-chip">Aquecimento</span>
+            <span id="exerciseCounter">Exercício 1 de 6</span>
+          </div>
+          <div id="trainingMediaGrid" class="training-media-grid">
+            <div class="trainer-visual-column">
+              <div class="visual-stage" id="visualStage">
+                <div class="pow-badge" aria-label="Concentração">집중</div>
+                <div class="art-stage-bg"></div>
+                <img id="poseArtwork" class="pose-artwork" src="assets/fitness/warmup-jog.webp" alt="Ilustração do exercício atual" />
+                <div id="realPhotoStrip" class="real-photo-strip" hidden aria-label="Fotografias reais da técnica"></div>
+                <div id="trainingPlaceholder" class="training-placeholder" hidden><span aria-hidden="true">검</span><strong>Imagem técnica ainda em validação</strong></div>
+                <button id="toggleExerciseImageBtn" class="image-reveal-btn" type="button" aria-pressed="false"><span aria-hidden="true">◉</span><strong>Ver demonstração</strong><small>Tenta recordar primeiro</small></button>
+                <button id="speedBtn" class="slow-overlay" type="button">1× Ritmo</button>
+              </div>
+              <div id="visualSpecificity" class="stage-caption"></div>
+            </div>
+            <aside id="techniqueVideoPanel" class="technique-video-panel" aria-live="polite" hidden></aside>
+          </div>
+
+          <div class="exercise-copy">
+            <span id="exerciseType" class="exercise-type">Técnica</span>
+            <h3 id="exerciseName">Dollyo chagi</h3>
+            <p id="exerciseTranslation" class="exercise-translation" hidden></p>
+            <p id="exerciseDescription"></p>
+            <div id="exerciseCurriculumMeta" class="exercise-curriculum-meta"></div>
+          </div>
+
+          <div class="timer-area">
+            <div id="exerciseTimer" class="exercise-timer">02:00</div>
+            <div class="timer-track"><div id="timerFill" class="timer-fill"></div></div>
+          </div>
+          <ul id="tipsList" class="tips-list"></ul>
+          <p id="exerciseSafetyNote" class="exercise-safety-note" hidden></p>
+          <div class="coach-bubble"><div class="coach-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h4l8-5v10l-8-5H4z"/><path d="m8 14 2 5h3l-2-6M19 9c1 1 1 5 0 6"/></svg></div><p id="coachMessage">Preparada? O apito assinala cada mudança.</p></div>
+          <aside id="trainingTipPanel" class="training-tip-panel" hidden aria-live="polite">
+            <button id="closeTrainingTipBtn" type="button" aria-label="Fechar dica">×</button>
+            <span id="trainingTipIndex">Dica</span>
+            <strong id="trainingTipText">Mantém a postura controlada.</strong>
+          </aside>
+        </article>
+
+        <div class="controls">
+          <button id="prevBtn" class="control-btn" aria-label="Exercício anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 3 12l6 6M21 6l-8 6 8 6z"/></svg><span>Anterior</span></button>
+          <button id="pauseBtn" class="control-btn primary-control" aria-label="Pausar treino"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span>Pausa</span></button>
+          <button id="repeatBtn" class="control-btn" aria-label="Repetir instrução"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17h6M10 20h4M8.5 14.5A6 6 0 1 1 15.5 14.5C14.5 15.3 14 16 14 17h-4c0-1-.5-1.7-1.5-2.5z"/></svg><span>Dica</span></button>
+          <button id="nextBtn" class="control-btn" aria-label="Próximo exercício"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6 6 6-6 6M3 6l8 6-8 6z"/></svg><span>Próximo</span></button>
+        </div>
+      </section>
+
+      <section id="summaryView" class="view" aria-labelledby="summaryTitle">
+        <div class="summary-card comic-card">
+          <div class="summary-icon">✓</div>
+          <span class="eyebrow">Sessão concluída</span>
+          <h2 id="summaryTitle">Bom trabalho!</h2>
+          <p id="summaryText"></p>
+          <div class="summary-stats">
+            <div><strong id="completedMinutes">90</strong><span>minutos</span></div>
+            <div><strong id="completedExercises">0</strong><span>exercícios</span></div>
+            <div><strong id="completedTechniques">0</strong><span>técnicas registadas</span></div>
+          </div>
+          <form id="feedbackForm" class="feedback-form">
+            <label>Esforço percebido
+              <select id="effortSelect">
+                <option value="5">5 — Leve</option><option value="6">6 — Moderado</option><option value="7" selected>7 — Exigente</option><option value="8">8 — Muito exigente</option><option value="9">9 — Quase máximo</option><option value="10">10 — Máximo</option>
+              </select>
+            </label>
+            <label>O que queres melhorar no próximo treino?
+              <textarea id="notesInput" rows="3" placeholder="Ex.: rotação do pé de apoio no dollyo chagi"></textarea>
+            </label>
+            <button type="submit" class="primary-btn">Guardar progresso</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <nav id="bottomNav" class="bottom-nav" aria-label="Navegação principal">
+      <button class="nav-item active" data-view="setup"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17c4-1 7-4 8-8l3 3 5-5M8 7l4 2M4 20c5-1 11-1 16 0"/><circle cx="11" cy="5" r="2"/></svg></span><small>Treinos</small></button>
+      <button class="nav-item" data-view="history"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4h11l2 2v14H6z"/><path d="M9 10h7M9 14h7M9 18h4"/><circle cx="17" cy="6" r="3"/><path d="M17 4.5V6l1 1"/></svg></span><small>Histórico</small></button>
+      <button id="customNavButton" class="nav-item nav-create" type="button" data-view="custom" aria-label="Criar treino personalizado"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></svg></span><small>Criar</small></button>
+      <button class="nav-item" data-view="audit"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="5" r="2"/><path d="m10 8-4 4 4 3-2 5M12 9l3 3 5 1M12 14l4 2 2 4"/><path d="M3 21c5-1 12-1 18 0"/></svg></span><small>Exercícios</small></button>
+      <button class="nav-item" data-view="progress"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19c4-1 5-6 9-7s5 3 9-5"/><path d="m17 7 4-1-1 4M5 20h14"/><circle cx="5" cy="15" r="1"/></svg></span><small>Progresso</small></button>
+    </nav>
+  </div>
+
+  <dialog id="techniqueDialog" class="technique-dialog">
+    <div class="dialog-navigation">
+      <button id="backFromTechniqueDialog" class="dialog-back" type="button" aria-label="Voltar aos exercícios"><span aria-hidden="true">←</span><span>Voltar aos exercícios</span></button>
+      <button id="closeTechniqueDialog" class="dialog-close" type="button" aria-label="Fechar">×</button>
+    </div>
+    <div id="dialogTechniqueMedia" class="dialog-technique-media"></div>
+    <span id="dialogTechniqueCategory" class="eyebrow"></span>
+    <h2 id="dialogTechniqueName"></h2>
+    <p id="dialogTechniqueTranslation"></p>
+    <div id="dialogTechniqueMeta" class="dialog-meta"></div>
+    <p id="dialogTechniqueNotes"></p>
+    <div class="dialog-actions">
+      <button id="cycleTechniqueStatus" class="primary-btn"></button>
+      <button id="practiceTechniqueBtn" class="ghost-btn">Marcar como praticada hoje</button>
+    </div>
+    <button id="bottomBackFromTechniqueDialog" class="dialog-bottom-back ghost-btn" type="button">← Voltar aos exercícios</button>
+  </dialog>
+
+  <dialog id="exerciseThumbnailDialog" class="exercise-thumbnail-dialog" aria-labelledby="exerciseThumbnailTitle">
+    <button id="closeExerciseThumbnailDialog" class="exercise-thumbnail-close" type="button" aria-label="Fechar fotografia">×</button>
+    <div id="exerciseThumbnailLarge" class="exercise-thumbnail-large"></div>
+    <h2 id="exerciseThumbnailTitle">Exercício</h2>
+    <p>Fotografia usada durante o treino.</p>
+  </dialog>
+
+  <script src="weights-v53.js" defer></script>
+  <script src="poomsae-sequences.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

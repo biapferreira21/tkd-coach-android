@@ -1,0 +1,33 @@
+{
+  "version": "v28-android-apk",
+  "result": "pass",
+  "file": "TKD-Coach-Android-v28-INSTALAR.apk",
+  "packageName": "com.tkdcoach.mobile",
+  "label": "TKD Coach",
+  "versionCode": 28,
+  "versionName": "28.0",
+  "compatibility": {
+    "minAndroid": "7.0",
+    "minSdk": 24,
+    "targetSdk": 35
+  },
+  "contents": {
+    "classesDex": true,
+    "indexHtml": true,
+    "appJavaScript": true,
+    "webpImages": 232,
+    "totalArchiveEntries": 254,
+    "androidTextToSpeech": true,
+    "offlineTraining": true
+  },
+  "signature": {
+    "verified": true,
+    "schemes": [
+      "v2",
+      "v3"
+    ],
+    "certificateSha256": "a044d0131798488f9f40627d5f0e79e7f703a21989b742ffd3f26599049325b9"
+  },
+  "fileSha256": "c5b43bc8b6d66cb5de85f2e6f8f889ed9f267a3d1b520d326b55ab5380d636a7",
+  "sizeBytes": 13431993
+}

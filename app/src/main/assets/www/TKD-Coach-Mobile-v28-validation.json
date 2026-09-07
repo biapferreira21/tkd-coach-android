@@ -1,0 +1,34 @@
+{
+  "version": "v28-mobile-pwa",
+  "result": "pass",
+  "installable": true,
+  "offline": true,
+  "platforms": [
+    "Android Chrome",
+    "iPhone Safari"
+  ],
+  "assets": {
+    "visuals": 161,
+    "icons": [
+      "192x192",
+      "512x512",
+      "180x180 Apple"
+    ]
+  },
+  "catalog": {
+    "exercises": 163,
+    "initialCards": 24,
+    "progressiveLoading": true
+  },
+  "training": {
+    "sessions": 13,
+    "exercisesPerSession": 45,
+    "mobileNoScroll": true,
+    "speed2x": true
+  },
+  "voice": {
+    "default": "voz local",
+    "worksWithoutApiKey": true,
+    "elevenLabs": "requer proxy seguro opcional"
+  }
+}

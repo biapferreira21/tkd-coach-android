@@ -1,0 +1,29 @@
+# Android Studio / Gradle
+.gradle/
+.idea/
+**/build/
+*.iml
+
+# Configuração específica deste computador
+local.properties
+
+# Assinatura e credenciais — nunca publicar
+*.jks
+*.keystore
+signing-password.txt
+*.pem
+*.p12
+*.key
+.env
+.env.*
+
+# Aplicações e artefactos gerados
+*.apk
+*.aab
+*.apks
+*.idsig
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
