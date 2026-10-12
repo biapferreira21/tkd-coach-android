@@ -23,6 +23,11 @@ signing-password.txt
 *.apks
 *.idsig
 
+# Conteúdo RepDB licenciado para distribuição dentro da aplicação.
+# O catálogo gerado e as imagens entram na APK, mas não são republicados como dataset.
+app/src/main/assets/www/catalog-v65.js
+app/src/main/assets/www/assets/repdb-v65/
+
 # Sistema operativo
 .DS_Store
 Thumbs.db

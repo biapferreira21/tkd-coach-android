@@ -124,6 +124,8 @@ const ART = {
 };
 
 const library = {
+  bands: [],
+  tkdLegs: [],
   warmups: [
     ex('Corrida no lugar', 90, 'Eleva a temperatura corporal com passada leve e ritmo progressivo.', ['Pousa suave', 'Respira fundo', 'Ombros soltos'], ART.warmup, 'Aquecimento'),
     ex('Passos laterais rápidos', 90, 'Desloca-te para os lados com joelhos ativos e guarda leve.', ['Pés paralelos', 'Centro baixo', 'Não cruzes os pés'], ART.cardio, 'Aquecimento'),
@@ -671,40 +673,33 @@ library.stretch.push(
   ex('Elevação e descida dos ombros',45,'Eleva os ombros na direção das orelhas e baixa-os lentamente.',['Braços soltos','Pescoço neutro','Expira ao descer'],ART.stretch,'Mobilidade')
 );
 
-// v64 · 200 novas entradas: fotografia pública incorporada, preparação específica
-// de Taekwondo e variantes oficiais de técnicas de mãos.
-const V64_CATALOG = [
-  ...(globalThis.TKD_V64_PUBLIC_EXERCISES || []),
-  ...(globalThis.TKD_V64_PREP_EXERCISES || [])
-];
-const V64_DEFAULT_ART = {
-  stretch: ART.stretch,
-  mobility: ART.stretch,
-  strength: ART.squat,
-  cardio: ART.cardio
-};
-V64_CATALOG.forEach(entry => {
+// v65 · exercícios de origem única, sem contar protocolos repetidos como movimentos novos.
+const V65_CATALOG = globalThis.TKD_V65_PHYSICAL_EXERCISES || [];
+V65_CATALOG.forEach(entry => {
   if (!library[entry.section]) return;
   const item = ex(
     entry.name,
     entry.seconds || 60,
     entry.description,
     entry.tips || [],
-    V64_DEFAULT_ART[entry.section] || ART.stretch,
+    entry.images?.[0]?.src || ART.stretch,
     entry.type || 'Exercício'
   );
   Object.assign(item, {
-    v64:true,
+    v65:true,
     sourceExerciseId:entry.id,
     sourceName:entry.sourceName || entry.name,
-    equipment:entry.equipment || 'body only',
+    equipment:entry.equipment || 'none',
     level:entry.level || 'intermediate',
-    muscles:entry.muscles || []
+    muscles:entry.muscles || [],
+    photos:entry.images || [],
+    mediaSource:'RepDB',
+    mediaSourceUrl:'https://repdb.co'
   });
   library[entry.section].push(item);
 });
-Object.assign(PUBLIC_DOMAIN_EXERCISE_MEDIA, globalThis.TKD_V64_EXERCISE_MEDIA || {});
-(globalThis.TKD_V64_HAND_TECHNIQUES || []).forEach(entry => {
+Object.assign(PUBLIC_DOMAIN_EXERCISE_MEDIA, globalThis.TKD_V65_EXERCISE_MEDIA || {});
+(globalThis.TKD_V65_HAND_FAMILIES || []).forEach(entry => {
   const item = ex(
     entry.name,
     entry.seconds || 75,
@@ -714,12 +709,13 @@ Object.assign(PUBLIC_DOMAIN_EXERCISE_MEDIA, globalThis.TKD_V64_EXERCISE_MEDIA ||
     'Técnica de braços'
   );
   Object.assign(item, {
-    v64:true,
+    v65:true,
     mediaKey:entry.name,
     koreanName:entry.name,
     portugueseName:entry.translation,
     category:'jireugi-chigi',
     level:entry.level,
+    photos:entry.images || [],
     curriculumLevel:'preview',
     safetyNote:'Pratica no ar ou em alvo apropriado, sem contacto com parceiro. Mantém punho e dedos alinhados.'
   });
@@ -1210,7 +1206,7 @@ function buildSession(def, index) {
       { name: 'Chagi · Pontapés', exercises: rotatePick(library.kicks, index * 2 + dayOffset, 5, 3) },
       { name: 'Poomsae · Formas', exercises: poomsaeSelection(index, def.dayKey).slice(0, 4) },
       { name: 'Chaeryeok · Cardio', exercises: rotatePick(library.cardio, index + dayOffset, 3, 3) },
-      { name: 'Him · Força/Core', exercises: rotatePick(library.strength, index * 2 + dayOffset, 4, 3) },
+      { name: 'Him · Força/Core', exercises: rotatePick([...library.strength, ...library.bands, ...library.tkdLegs], index * 2 + dayOffset, 4, 3) },
       { name: 'Jeongni undong · Alongamento variado', exercises: rotatePick(library.stretch, index * 4 + dayOffset, 6, 3) }
     ]
   };
@@ -1267,7 +1263,7 @@ function makeRandomSession() {
       { name: 'Chagi · Pontapés', exercises: shufflePick(library.kicks, 5) },
       { name: 'Poomsae · Formas', exercises: shufflePick(library.poomsae, 4) },
       { name: 'Chaeryeok · Cardio', exercises: shufflePick(library.cardio, 3) },
-      { name: 'Him · Força/Core', exercises: shufflePick(library.strength, 4) },
+      { name: 'Him · Força/Core', exercises: shufflePick([...library.strength, ...library.bands, ...library.tkdLegs], 4) },
       { name: 'Jeongni undong · Alongamento variado', exercises: shufflePick(library.stretch, 6) }
     ]
   };
@@ -1297,6 +1293,7 @@ const CUSTOM_EXERCISE_GROUPS = [
   { key:'arms', label:'Bases e técnicas de mãos', technical:true }, { key:'kicks', label:'Pontapés', technical:true },
   { key:'poomsae', label:'Poomsae', technical:true }, { key:'poomsaeSteps', label:'Poomsae · passos individuais', technical:true }, { key:'cardio', label:'Cardio' },
   { key:'strength', label:'Força e core' }, { key:'stretch', label:'Alongamentos' },
+  { key:'bands', label:'Elásticos' }, { key:'tkdLegs', label:'Pernas para Taekwondo' },
   { key:'boxing', label:'Boxe e sequências' }, { key:'kickboxing', label:'Kickboxing e sequências' },
   { key:'weights', label:'Treino com pesos' }
 ];
@@ -1518,7 +1515,7 @@ function customExerciseThumbnailMarkup(exercise) {
   const sheetCount = photo.sheetCount || 5;
   const visual = Number.isInteger(photo.sheetIndex)
     ? `<span class="custom-thumb-sprite" style="background-image:url('${photo.src}');background-position:${photo.sheetIndex / Math.max(1, sheetCount - 1) * 100}% center"></span>`
-    : `<img src="${photo.src}" alt="${escapeHtml(label)}" loading="lazy" />`;
+    : `<img src="${photo.src}" alt="${escapeHtml(label)}" />`;
   return `<button class="custom-exercise-thumb" type="button" data-thumb-src="${photo.src}" data-thumb-label="${escapeHtml(label)}" data-sheet-index="${sheetIndex}" data-sheet-count="${sheetCount}" aria-label="Ampliar fotografia de ${escapeHtml(exercise.name)}">${visual}<span class="custom-thumb-zoom" aria-hidden="true">＋</span></button>`;
 }
 function openExerciseThumbnail(button) {
@@ -1906,7 +1903,7 @@ const curriculumTechniques = [
   tech('Taegeuk Pal Jang','poomsae','oitava forma Taegeuk','advanced','Última Taegeuk antes da progressão de Dan.'),
   tech('Koryo','poomsae','primeira poomsae de Dan','dan','Poomsae associada à entrada no percurso de cinto negro.')
 ];
-(globalThis.TKD_V64_HAND_TECHNIQUES || []).forEach(entry => {
+(globalThis.TKD_V65_HAND_FAMILIES || []).forEach(entry => {
   curriculumTechniques.push(tech(
     entry.name,
     'son',
@@ -3741,7 +3738,7 @@ const VERIFIED_TECHNIQUE_MEDIA = {
   "Jebipum chigi": { "photos": [{ "src": "assets/verified-v39/jebipum-chigi.png", "label": "Jebipum chigi" }], "source": "Master Keyver · fotografia cedida por Kukkiwon", "sourceUrl": "https://www.masterkeyver.com/chigi.php", "contact": "Uma mão protege e a outra golpeia", "verified": true }
 };
 function getVerifiedTechniqueMedia(name = '') {
-  return (globalThis.TKD_V64_TECHNIQUE_MEDIA || {})[name] || VERIFIED_TECHNIQUE_MEDIA[name] || null;
+  return (globalThis.TKD_V65_TECHNIQUE_MEDIA || {})[name] || VERIFIED_TECHNIQUE_MEDIA[name] || null;
 }
 
 const HUMAN_SOURCE = 'Demonstração fotográfica humana';
@@ -4337,6 +4334,8 @@ function exerciseCatalogGroups() {
     { key:'cardio', label:'Cardio', items:library.cardio },
     { key:'strength', label:'Força', items:library.strength.filter(item => item.type === 'Força') },
     { key:'core', label:'Core', items:library.strength.filter(item => item.type === 'Core') },
+    { key:'bands', label:'Elásticos', items:library.bands },
+    { key:'tkdLegs', label:'Pernas para Taekwondo', items:library.tkdLegs },
     { key:'stretch', label:'Alongamentos', items:library.stretch }
   ];
 }
@@ -4345,7 +4344,7 @@ function exerciseCatalogMediaMarkup(item) {
   const photos = resolved.photos || [];
   if (!photos.length) return '<div class="technical-placeholder"><div>검</div><strong>Sem fotografia específica</strong></div>';
   const photo = photos[0];
-  return `<div class="technical-media media-real catalog-media"><img src="${photo.src}" alt="Demonstração: ${escapeHtml(photo.label || item.name)}" loading="lazy" /><span>${photos.length > 1 ? photos.length + ' vistas' : 'Demonstração'}</span></div>`;
+  return `<div class="technical-media media-real catalog-media"><img src="${photo.src}" alt="Demonstração: ${escapeHtml(photo.label || item.name)}" /><span>${photos.length > 1 ? photos.length + ' vistas' : 'Demonstração'}</span></div>`;
 }
 function renderVisualAudit() {
   const groups = exerciseCatalogGroups();
@@ -4758,6 +4757,21 @@ function makeExerciseDiagram(item) {
 }
 
 function resolveExerciseMedia(item) {
+  const directPhotos = Array.isArray(item?.photos) ? item.photos.filter(photo => photo?.src) : [];
+  if (directPhotos.length) {
+    return {
+      src: directPhotos[0].src,
+      photos: directPhotos,
+      status: 'real_exact',
+      technique: getExerciseTechniques(item)[0] || null,
+      media: {
+        photos: directPhotos,
+        source: item.mediaSource || 'Imagem incorporada',
+        sourceUrl: item.mediaSourceUrl || '',
+        real: true
+      }
+    };
+  }
   const matches = getExerciseTechniques(item);
   const poomsaeStep = getPoomsaeStepMedia(item);
   const poomsaeSequence = poomsaeStep || getPoomsaeSequenceMedia(item.name) || getPoomsaeSequenceMedia(item.koreanName) || getPoomsaeSequenceMedia(item.mediaKey);

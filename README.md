@@ -8,11 +8,11 @@ Aplicação Android de treino de Taekwondo que combina sessões guiadas, criaç�
 
 ## Descarregar a aplicação
 
-[![Descarregar TKD Coach 64.0](https://img.shields.io/badge/Descarregar_APK-TKD_Coach_64.0-174f3b?style=for-the-badge&logo=android&logoColor=white)](https://github.com/biapferreira21/tkd-coach-android/releases/latest/download/TKD-Coach-v64.apk)
+[![Descarregar TKD Coach 65.0](https://img.shields.io/badge/Descarregar_APK-TKD_Coach_65.0-174f3b?style=for-the-badge&logo=android&logoColor=white)](https://github.com/biapferreira21/tkd-coach-android/releases/latest/download/TKD-Coach-v65.apk)
 
-A versão Android mais recente é a **64.0** (`versionCode 10069`), para Android 7.0 ou posterior. Esta edição acrescenta 200 entradas novas — 90 exercícios com fotografias incorporadas, 80 progressões para mobilidade/força e preparação de pontapés, e 30 variantes de técnicas de mãos. A APK assinada fica disponível nos [Releases do GitHub](https://github.com/biapferreira21/tkd-coach-android/releases/latest), fora do histórico do código-fonte.
+A versão Android mais recente é a **65.0** (`versionCode 10070`), para Android 7.0 ou posterior. Esta edição substitui as variações repetidas da versão anterior por **192 exercícios físicos de origem única** e oito famílias adicionais de técnicas de mãos. Inclui 58 alongamentos, 28 exercícios com elásticos, 40 exercícios de pernas úteis para Taekwondo e 296 imagens cujo conteúdo não se repete. A APK assinada fica disponível nos [Releases do GitHub](https://github.com/biapferreira21/tkd-coach-android/releases/latest), fora do histórico do código-fonte.
 
-1. No telemóvel Android, descarregar `TKD-Coach-v64.apk`.
+1. No telemóvel Android, descarregar `TKD-Coach-v65.apk`.
 2. Abrir o ficheiro transferido.
 3. Se o Android pedir autorização, permitir temporariamente a instalação de aplicações desta fonte.
 4. Escolher **Instalar** ou **Atualizar**.
@@ -20,7 +20,7 @@ A versão Android mais recente é a **64.0** (`versionCode 10069`), para Android
 SHA-256 da APK publicada:
 
 ```text
-01496FBFEA53367F30DEBBEA07CE1E5DA40055B2194EF14F7E3348594D52FE87
+AABC3B9390E6859284DAC0DE5D6143E7663081D68C85B099A8089E9BE8ED7290
 ```
 
 > Esta é uma distribuição direta para teste. O Android pode avisar que a aplicação não veio da Google Play porque a instalação é feita através de uma APK.
@@ -48,6 +48,7 @@ Planear um treino variado implica normalmente consultar várias listas, temporiz
 - Reordenação manual e opção **Baralhar** apenas para a sessão atual
 - Taegeuk 1–8 e Koryo passo a passo
 - Catálogo com Taekwondo, Poomsae, boxe, kickboxing, cardio, força, alongamentos e pesos livres
+- Secções próprias para exercícios com elásticos e reforço de pernas para Taekwondo
 - Fotografias e miniaturas incorporadas para consulta offline
 - Temporizador por exercício, posição atual e tempo total restante
 - Modo de sessão concentrado no nome, tempo e imagem
@@ -92,10 +93,12 @@ app/src/main/
   assets/www/styles.css                        Design responsivo
   assets/www/poomsae-sequences.js              Sequências das formas
   assets/www/weights-v53.js                     Catálogo de pesos livres
-  assets/www/catalog-v64.js                     200 novos exercícios e técnicas
+  assets/www/catalog-v65.js                     catálogo licenciado gerado para a APK
   assets/www/assets/                            Fotografias, arte e ícones
   res/                                          Tema e ícone Android
 ```
+
+Os dados e as ilustrações RepDB são distribuídos dentro da aplicação com atribuição e não são republicados como dataset no repositório. Ver [fontes e validação do catálogo 65.0](docs/FONTES-CATALOGO-V65.md).
 
 ## Executar no Android Studio
 

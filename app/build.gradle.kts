@@ -8,8 +8,8 @@ android {
         applicationId = "app.alphavote.tkdcoach"
         minSdk = 24
         targetSdk = 35
-        versionCode = 10069
-        versionName = "64.0"
+        versionCode = 10070
+        versionName = "65.0"
     }
 
     buildTypes {
