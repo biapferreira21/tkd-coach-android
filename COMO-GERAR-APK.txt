@@ -1,4 +1,4 @@
-TKD COACH ANDROID v63
+TKD COACH ANDROID v64
 
 Este projeto contém a aplicação completa, as imagens e a voz Android.
 

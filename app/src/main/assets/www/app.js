@@ -671,6 +671,61 @@ library.stretch.push(
   ex('Elevação e descida dos ombros',45,'Eleva os ombros na direção das orelhas e baixa-os lentamente.',['Braços soltos','Pescoço neutro','Expira ao descer'],ART.stretch,'Mobilidade')
 );
 
+// v64 · 200 novas entradas: fotografia pública incorporada, preparação específica
+// de Taekwondo e variantes oficiais de técnicas de mãos.
+const V64_CATALOG = [
+  ...(globalThis.TKD_V64_PUBLIC_EXERCISES || []),
+  ...(globalThis.TKD_V64_PREP_EXERCISES || [])
+];
+const V64_DEFAULT_ART = {
+  stretch: ART.stretch,
+  mobility: ART.stretch,
+  strength: ART.squat,
+  cardio: ART.cardio
+};
+V64_CATALOG.forEach(entry => {
+  if (!library[entry.section]) return;
+  const item = ex(
+    entry.name,
+    entry.seconds || 60,
+    entry.description,
+    entry.tips || [],
+    V64_DEFAULT_ART[entry.section] || ART.stretch,
+    entry.type || 'Exercício'
+  );
+  Object.assign(item, {
+    v64:true,
+    sourceExerciseId:entry.id,
+    sourceName:entry.sourceName || entry.name,
+    equipment:entry.equipment || 'body only',
+    level:entry.level || 'intermediate',
+    muscles:entry.muscles || []
+  });
+  library[entry.section].push(item);
+});
+Object.assign(PUBLIC_DOMAIN_EXERCISE_MEDIA, globalThis.TKD_V64_EXERCISE_MEDIA || {});
+(globalThis.TKD_V64_HAND_TECHNIQUES || []).forEach(entry => {
+  const item = ex(
+    entry.name,
+    entry.seconds || 75,
+    entry.description,
+    entry.tips || [],
+    ART.punch,
+    'Técnica de braços'
+  );
+  Object.assign(item, {
+    v64:true,
+    mediaKey:entry.name,
+    koreanName:entry.name,
+    portugueseName:entry.translation,
+    category:'jireugi-chigi',
+    level:entry.level,
+    curriculumLevel:'preview',
+    safetyNote:'Pratica no ar ou em alvo apropriado, sem contacto com parceiro. Mantém punho e dedos alinhados.'
+  });
+  library.arms.push(item);
+});
+
 // v53 · Treino com pesos. A fonte oficial é carregada em weights-v53.js.
 // Apenas halteres, kettlebells e barra; máquinas, cabos e outros aparelhos ficam excluídos.
 const WEIGHT_EQUIPMENT_META = {
@@ -1851,6 +1906,15 @@ const curriculumTechniques = [
   tech('Taegeuk Pal Jang','poomsae','oitava forma Taegeuk','advanced','Última Taegeuk antes da progressão de Dan.'),
   tech('Koryo','poomsae','primeira poomsae de Dan','dan','Poomsae associada à entrada no percurso de cinto negro.')
 ];
+(globalThis.TKD_V64_HAND_TECHNIQUES || []).forEach(entry => {
+  curriculumTechniques.push(tech(
+    entry.name,
+    'son',
+    entry.translation,
+    entry.level,
+    'Variação técnica catalogada segundo a nomenclatura padronizada Kukkiwon. Treinar no ar, sem contacto.'
+  ));
+});
 
 const TECHNIQUE_MEDIA = {
   "Moa seogi": {
@@ -3677,7 +3741,7 @@ const VERIFIED_TECHNIQUE_MEDIA = {
   "Jebipum chigi": { "photos": [{ "src": "assets/verified-v39/jebipum-chigi.png", "label": "Jebipum chigi" }], "source": "Master Keyver · fotografia cedida por Kukkiwon", "sourceUrl": "https://www.masterkeyver.com/chigi.php", "contact": "Uma mão protege e a outra golpeia", "verified": true }
 };
 function getVerifiedTechniqueMedia(name = '') {
-  return VERIFIED_TECHNIQUE_MEDIA[name] || null;
+  return (globalThis.TKD_V64_TECHNIQUE_MEDIA || {})[name] || VERIFIED_TECHNIQUE_MEDIA[name] || null;
 }
 
 const HUMAN_SOURCE = 'Demonstração fotográfica humana';

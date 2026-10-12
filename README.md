@@ -8,11 +8,11 @@ Aplicação Android de treino de Taekwondo que combina sessões guiadas, criaç�
 
 ## Descarregar a aplicação
 
-[![Descarregar TKD Coach 63.0](https://img.shields.io/badge/Descarregar_APK-TKD_Coach_63.0-174f3b?style=for-the-badge&logo=android&logoColor=white)](https://github.com/biapferreira21/tkd-coach-android/releases/latest/download/TKD-Coach-v63.apk)
+[![Descarregar TKD Coach 64.0](https://img.shields.io/badge/Descarregar_APK-TKD_Coach_64.0-174f3b?style=for-the-badge&logo=android&logoColor=white)](https://github.com/biapferreira21/tkd-coach-android/releases/latest/download/TKD-Coach-v64.apk)
 
-A versão Android mais recente é a **63.0** (`versionCode 10068`), para Android 7.0 ou posterior. A APK está assinada e disponível nos [Releases do GitHub](https://github.com/biapferreira21/tkd-coach-android/releases/latest), fora do histórico do código-fonte.
+A versão Android mais recente é a **64.0** (`versionCode 10069`), para Android 7.0 ou posterior. Esta edição acrescenta 200 entradas novas — 90 exercícios com fotografias incorporadas, 80 progressões para mobilidade/força e preparação de pontapés, e 30 variantes de técnicas de mãos. A APK assinada fica disponível nos [Releases do GitHub](https://github.com/biapferreira21/tkd-coach-android/releases/latest), fora do histórico do código-fonte.
 
-1. No telemóvel Android, descarregar `TKD-Coach-v63.apk`.
+1. No telemóvel Android, descarregar `TKD-Coach-v64.apk`.
 2. Abrir o ficheiro transferido.
 3. Se o Android pedir autorização, permitir temporariamente a instalação de aplicações desta fonte.
 4. Escolher **Instalar** ou **Atualizar**.
@@ -20,7 +20,7 @@ A versão Android mais recente é a **63.0** (`versionCode 10068`), para Android
 SHA-256 da APK publicada:
 
 ```text
-25EC00AB77E9306BF67089A3A8280CBCB4F715B11E802C73C395526A13A81129
+01496FBFEA53367F30DEBBEA07CE1E5DA40055B2194EF14F7E3348594D52FE87
 ```
 
 > Esta é uma distribuição direta para teste. O Android pode avisar que a aplicação não veio da Google Play porque a instalação é feita através de uma APK.
@@ -92,6 +92,7 @@ app/src/main/
   assets/www/styles.css                        Design responsivo
   assets/www/poomsae-sequences.js              Sequências das formas
   assets/www/weights-v53.js                     Catálogo de pesos livres
+  assets/www/catalog-v64.js                     200 novos exercícios e técnicas
   assets/www/assets/                            Fotografias, arte e ícones
   res/                                          Tema e ícone Android
 ```
