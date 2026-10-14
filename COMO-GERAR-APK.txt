@@ -1,4 +1,4 @@
-TKD COACH ANDROID v65
+ALPHA TKD PRO ANDROID v66
 
 Este projeto contém a aplicação completa, as imagens e a voz Android.
 

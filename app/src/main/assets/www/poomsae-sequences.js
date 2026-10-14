@@ -1,5 +1,5 @@
 /*
- * Sequências didáticas das poomsae usadas pela TKD Coach.
+ * Sequências didáticas das poomsae usadas pela Alpha TKD Pro.
  *
  * Cada entrada representa uma técnica visível. Quando uma ordem oficial contém
  * várias ações, são usadas letras (por exemplo 14a/14b). Isto permite praticar

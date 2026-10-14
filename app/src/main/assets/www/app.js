@@ -912,7 +912,7 @@ library.kickboxing = [
 // o corpo inteiro, a guarda, a câmara do joelho e a extensão do pontapé.
 COMBAT_EXERCISE_MEDIA['Pontapé frontal de kickboxing'] = {
   photos:[COMBAT_STEPS.frontKick],
-  source:'Imagem didática criada para a TKD Coach',
+  source:'Imagem didática criada para a Alpha TKD Pro',
   sourceUrl:'',
   license:'Recurso incorporado na aplicação',
   real:true
@@ -1413,11 +1413,21 @@ function renderCustomOrderList() {
     <div class="custom-order-actions">
       <button type="button" data-order-move="up" aria-label="Mover ${escapeHtml(entry.exercise.name)} para cima" ${index === 0 ? 'disabled' : ''}>↑</button>
       <button type="button" data-order-move="down" aria-label="Mover ${escapeHtml(entry.exercise.name)} para baixo" ${index === ordered.length - 1 ? 'disabled' : ''}>↓</button>
+      <button class="remove-custom-exercise" type="button" data-order-remove="${entry.id}" aria-label="Remover ${escapeHtml(entry.exercise.name)} do treino">×</button>
     </div>
   </article>`).join('');
   $$('#customOrderList [data-order-move]').forEach(button => button.addEventListener('click', () => {
     const id = button.closest('.custom-order-row').dataset.orderExerciseId;
     moveCustomExercise(id, button.dataset.orderMove === 'up' ? -1 : 1);
+  }));
+  $$('#customOrderList [data-order-remove]').forEach(button => button.addEventListener('click', () => {
+    const id = button.dataset.orderRemove;
+    state.customSelections.delete(id);
+    state.customOrder = state.customOrder.filter(orderId => orderId !== id);
+    state.customLoops = state.customLoops
+      .map(loop => ({ ...loop, exerciseIds:loop.exerciseIds.filter(exerciseId => exerciseId !== id) }))
+      .filter(loop => loop.exerciseIds.length);
+    renderCustomExerciseOptions();
   }));
   $$('#customOrderList .custom-order-duration input').forEach(input => input.addEventListener('input', () => {
     const id = input.closest('.custom-order-row').dataset.orderExerciseId;
@@ -1538,7 +1548,12 @@ function renderCustomExerciseOptions() {
   [...state.customSelections.keys()].forEach(id => { if (!allowed.has(id)) state.customSelections.delete(id); });
   syncCustomExerciseOrder();
   const entries = visibleCustomExercises();
-  const groups = CUSTOM_EXERCISE_GROUPS.map(group => ({...group, items:entries.filter(entry => entry.groupKey === group.key)})).filter(group => group.items.length);
+  const groups = CUSTOM_EXERCISE_GROUPS.map(group => ({
+    ...group,
+    items:entries
+      .filter(entry => entry.groupKey === group.key)
+      .sort((a, b) => a.exercise.name.localeCompare(b.exercise.name, 'pt-PT', { sensitivity:'base', numeric:true }))
+  })).filter(group => group.items.length);
   $('#customExerciseList').innerHTML = groups.length ? groups.map((group, groupIndex) => `<details class="custom-exercise-group" ${groupIndex < 2 ? 'open' : ''}>
     <summary><strong>${escapeHtml(group.label)}</strong><small>${group.items.length} exercícios</small></summary>
     <div class="custom-exercise-grid">${group.items.map(entry => {
@@ -1674,6 +1689,32 @@ function editCreatedSession(sessionId) {
   $('#cancelCustomEditBtn').hidden = false;
   $('#customWorkoutStatus').textContent = state.customSelections.size ? 'Podes alterar exercícios, loops, ordem, tempos e descansos.' : 'Este treino antigo não pôde ser reconstruído por completo; adiciona os exercícios que pretendes guardar.';
   showView('custom');
+}
+function duplicateCreatedSession(sessionId) {
+  const source = augustSessions.find(item => item.id === sessionId && item.personalized);
+  if (!source) return;
+  const copy = JSON.parse(JSON.stringify(source));
+  const existingNames = new Set(augustSessions.filter(item => item.personalized).map(item => trainingTitle(item).toLocaleLowerCase('pt-PT')));
+  const baseName = `${trainingTitle(source)} · cópia`;
+  let copyName = baseName;
+  let copyNumber = 2;
+  while (existingNames.has(copyName.toLocaleLowerCase('pt-PT'))) {
+    copyName = `${baseName} ${copyNumber}`;
+    copyNumber += 1;
+  }
+  copy.id = `personalized-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  copy.label = copyName;
+  copy.fullDate = copyName;
+  copy.date = 'Novo';
+  copy.week = 'Criado por ti';
+  copy.customNumber = augustSessions.filter(item => item.personalized).length + 1;
+  augustSessions.push(copy);
+  state.selectedSessionId = copy.id;
+  saveGeneratedSessions();
+  renderMonthSummary();
+  renderSessions();
+  renderSessionPreview();
+  editCreatedSession(copy.id);
 }
 function createCustomSession(event) {
   event.preventDefault();
@@ -4141,6 +4182,7 @@ function createdSessionMarkup(session) {
       <div><button class="confirm-delete-created" type="button">Eliminar</button><button class="cancel-delete-created" type="button">Cancelar</button></div>
     </div>` : `<div class="created-session-actions">
       <button class="edit-created-session" type="button" data-edit-session-id="${session.id}" aria-label="Editar ${escapeHtml(trainingTitle(session))}">Editar</button>
+      <button class="duplicate-created-session" type="button" data-duplicate-session-id="${session.id}" aria-label="Duplicar ${escapeHtml(trainingTitle(session))}">Duplicar</button>
       <button class="rename-created-session" type="button" data-rename-session-id="${session.id}" aria-label="Mudar nome de ${escapeHtml(trainingTitle(session))}">Nome</button>
       <button class="repeat-created-session" type="button" data-repeat-session-id="${session.id}" aria-label="Repetir ${escapeHtml(trainingTitle(session))}">Repetir</button>
       <button class="shuffle-created-session" type="button" data-shuffle-session-id="${session.id}" aria-label="Baralhar e começar ${escapeHtml(trainingTitle(session))}">Baralhar</button>
@@ -4180,6 +4222,7 @@ function renderSessions() {
     renderSessions(); renderSessionPreview(); startShuffledSession(session);
   }));
   $$('.edit-created-session').forEach(button => button.addEventListener('click', () => editCreatedSession(button.dataset.editSessionId)));
+  $$('.duplicate-created-session').forEach(button => button.addEventListener('click', () => duplicateCreatedSession(button.dataset.duplicateSessionId)));
   $$('.rename-created-session').forEach(button => button.addEventListener('click', () => {
     state.renameSessionId = button.dataset.renameSessionId;
     state.deleteSessionId = null;
@@ -4580,6 +4623,13 @@ function coachMotivationFor(item, offset = 0) {
 }
 function coachScriptFor(item, phase = 'start') {
   if (!item) return '';
+  if (item.isRest || item.name === 'Descanso') {
+    const upcoming = state.flattened?.slice(state.currentIndex + 1).find(exercise => !exercise.isRest && exercise.name !== 'Descanso');
+    const upcomingName = upcoming?.koreanName || upcoming?.name;
+    if (phase === 'final') return upcomingName ? `Fim do descanso. A seguir: ${upcomingName}. Prepara a posição inicial.` : 'Fim do descanso. Prepara-te para continuar.';
+    if (phase === 'middle') return upcomingName ? `Metade do descanso. Respira e observa a demonstração de ${upcomingName}.` : 'Metade do descanso. Respira fundo.';
+    return upcomingName ? `Descanso. Recupera e prepara-te. A seguir: ${upcomingName}. Observa agora a posição inicial.` : 'Descanso. Recupera, respira e prepara-te.';
+  }
   const name = item.koreanName || item.name;
   const tips = item.keyPoints || item.tips || [];
   const first = tips[0] || 'Mantém uma postura controlada.';
@@ -4858,11 +4908,17 @@ function advanceTrainingPhoto(direction = 1) {
 function updateExerciseUI(announce = true) {
   const item = currentExercise();
   if (!item) return finishSession();
+  const isRest = item.isRest || item.name === 'Descanso';
+  const upcomingExercise = isRest
+    ? state.flattened.slice(state.currentIndex + 1).find(exercise => !exercise.isRest && exercise.name !== 'Descanso')
+    : null;
+  const visualItem = upcomingExercise || item;
   state.tipIndex = 0;
   state.trainingPhotoIndex = 0;
   state.trainingPhotoElapsed = 0;
   hideTrainingTip();
-  setExerciseImageRevealed(!shouldConcealExerciseImage(item));
+  setExerciseImageRevealed(upcomingExercise ? true : !shouldConcealExerciseImage(item));
+  $('#toggleExerciseImageBtn').hidden = Boolean(upcomingExercise);
   const session = getSelectedSession();
   $('#trainingDay').textContent = trainingTitle(session);
   $('#trainingTitle').textContent = item.blockName;
@@ -4876,6 +4932,14 @@ function updateExerciseUI(announce = true) {
   $('#exerciseTranslation').textContent = item.portugueseName || '';
   $('#exerciseTranslation').hidden = !item.portugueseName;
   $('#exerciseDescription').textContent = item.description;
+  const restPreview = $('#restNextPreview');
+  if (restPreview) {
+    restPreview.hidden = !upcomingExercise;
+    if (upcomingExercise) {
+      $('#restNextName').textContent = upcomingExercise.koreanName || upcomingExercise.name;
+      $('#restNextType').textContent = `${upcomingExercise.type || 'Exercício'} · prepara a posição inicial`;
+    }
+  }
   $('#exerciseTimer').textContent = formatTime(state.remaining);
   $('#sessionTimer').textContent = formatTime(state.sessionRemaining, true);
   $('#timerFill').style.width = '100%';
@@ -4884,12 +4948,12 @@ function updateExerciseUI(announce = true) {
   $('#exerciseSafetyNote').textContent = item.safetyNote || '';
   $('#exerciseSafetyNote').hidden = !item.safetyNote;
 
-  const resolved = resolveExerciseMedia(item);
+  const resolved = resolveExerciseMedia(visualItem);
   const artwork = $('#poseArtwork');
   const photoStrip = $('#realPhotoStrip');
   const placeholder = $('#trainingPlaceholder');
   const caption = $('#visualSpecificity');
-  const isTechnical = TECHNICAL_TYPES.has(item.type);
+  const isTechnical = TECHNICAL_TYPES.has(visualItem.type);
   photoStrip.hidden = true;
   photoStrip.innerHTML = '';
   photoStrip.classList.remove('is-carousel');
@@ -4902,9 +4966,9 @@ function updateExerciseUI(announce = true) {
     photoStrip.classList.toggle('is-carousel', resolved.photos.length > 1);
     const photoCards = resolved.photos.map((photo, index) => {
       const visual = Number.isInteger(photo.sheetIndex)
-        ? `<div class="conditioning-sprite" role="img" aria-label="Demonstração: ${escapeHtml(photo.label || item.name)}" style="background-image:url('${photo.src}');--sprite-x:${photo.sheetIndex / Math.max(1, (photo.sheetCount || 5) - 1) * 100}%"></div>`
-        : `<img src="${photo.src}" alt="Fotografia real ${index + 1}: ${escapeHtml(photo.label || item.name)}" />`;
-      return `<figure class="real-photo-card${index === 0 ? ' active' : ''}" aria-hidden="${index === 0 ? 'false' : 'true'}">${visual}<figcaption>${escapeHtml(photo.label || item.name)}</figcaption></figure>`;
+        ? `<div class="conditioning-sprite" role="img" aria-label="Demonstração: ${escapeHtml(photo.label || visualItem.name)}" style="background-image:url('${photo.src}');--sprite-x:${photo.sheetIndex / Math.max(1, (photo.sheetCount || 5) - 1) * 100}%"></div>`
+        : `<img src="${photo.src}" alt="Fotografia real ${index + 1}: ${escapeHtml(photo.label || visualItem.name)}" />`;
+      return `<figure class="real-photo-card${index === 0 ? ' active' : ''}" aria-hidden="${index === 0 ? 'false' : 'true'}">${visual}<figcaption>${escapeHtml(photo.label || visualItem.name)}</figcaption></figure>`;
     }).join('');
     const carouselControls = resolved.photos.length > 1
       ? `<button class="training-photo-nav training-photo-prev" type="button" aria-label="Fotografia anterior">‹</button><span class="training-photo-indicator" aria-live="polite">1 / ${resolved.photos.length}</span><button class="training-photo-nav training-photo-next" type="button" aria-label="Fotografia seguinte">›</button>`
@@ -4939,8 +5003,8 @@ function updateExerciseUI(announce = true) {
     };
     artwork.src = resolved.src;
     artwork.alt = isTechnical
-      ? `Demonstração validada: ${resolved.technique?.name || item.name}`
-      : `Ilustração específica do exercício: ${item.name}`;
+      ? `Demonstração validada: ${resolved.technique?.name || visualItem.name}`
+      : `Ilustração específica do exercício: ${visualItem.name}`;
     artwork.hidden = false;
     placeholder.hidden = true;
     if (resolved.media?.videoThumbnail) {
@@ -4968,9 +5032,12 @@ function updateExerciseUI(announce = true) {
       ? 'Segue o checklist; uma pose isolada não demonstra a poomsae completa.'
       : message;
   }
-  updateTechniqueVideo(item);
-  const matches = getExerciseTechniques(item);
-  $('#exerciseCurriculumMeta').innerHTML = matches.length
+  if (upcomingExercise) caption.innerHTML = `<strong>A seguir: ${escapeHtml(upcomingExercise.koreanName || upcomingExercise.name)}</strong> · observa a imagem e prepara a posição inicial.`;
+  updateTechniqueVideo(visualItem);
+  const matches = getExerciseTechniques(visualItem);
+  $('#exerciseCurriculumMeta').innerHTML = upcomingExercise
+    ? `<span>A seguir · ${escapeHtml(upcomingExercise.type || 'Exercício')}</span>`
+    : matches.length
     ? matches.map(technique => `<span>${CATEGORY_META[technique.category].hangul} ${technique.name} · ${technique.curriculumLevel === 'current_focus' ? 'Foco atual' : technique.curriculumLevel === 'preview' ? 'Prévia' : 'Só referência'}</span>`).join('')
     : '<span>Condicionamento complementar</span>';
   updateBlockProgress();

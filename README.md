@@ -1,18 +1,18 @@
-# TKD Coach
+# Alpha TKD Pro
 
 Aplicação Android de treino de Taekwondo que combina sessões guiadas, criação livre de workouts, um catálogo visual de exercícios e Poomsae passo a passo numa experiência concebida para funcionar durante o treino.
 
 <p align="center">
-  <img src="app/src/main/assets/www/icon-512.png" width="160" alt="Logótipo TKD Coach" />
+  <img src="app/src/main/assets/www/icon-512.png" width="160" alt="Logótipo Alpha TKD Pro" />
 </p>
 
 ## Descarregar a aplicação
 
-[![Descarregar TKD Coach 65.0](https://img.shields.io/badge/Descarregar_APK-TKD_Coach_65.0-174f3b?style=for-the-badge&logo=android&logoColor=white)](https://github.com/biapferreira21/tkd-coach-android/releases/latest/download/TKD-Coach-v65.apk)
+[![Descarregar Alpha TKD Pro 66.0](https://img.shields.io/badge/Descarregar_APK-Alpha_TKD_Pro_66.0-174f3b?style=for-the-badge&logo=android&logoColor=white)](https://github.com/biapferreira21/tkd-coach-android/releases/latest/download/Alpha-TKD-Pro-v66.apk)
 
-A versão Android mais recente é a **65.0** (`versionCode 10070`), para Android 7.0 ou posterior. Esta edição substitui as variações repetidas da versão anterior por **192 exercícios físicos de origem única** e oito famílias adicionais de técnicas de mãos. Inclui 58 alongamentos, 28 exercícios com elásticos, 40 exercícios de pernas úteis para Taekwondo e 296 imagens cujo conteúdo não se repete. A APK assinada fica disponível nos [Releases do GitHub](https://github.com/biapferreira21/tkd-coach-android/releases/latest), fora do histórico do código-fonte.
+A versão Android mais recente é a **66.0** (`versionCode 10071`), para Android 7.0 ou posterior. A aplicação passa a chamar-se **Alpha TKD Pro**. Esta edição permite remover exercícios durante a edição, duplicar um treino e editar imediatamente a cópia, ordena alfabeticamente os exercícios dentro de cada categoria e mostra a fotografia e o nome do próximo exercício durante os descansos. Mantém os **192 exercícios físicos de origem única**, 58 alongamentos, 28 exercícios com elásticos, 40 exercícios de pernas úteis para Taekwondo e 296 imagens cujo conteúdo não se repete. A APK assinada fica disponível nos [Releases do GitHub](https://github.com/biapferreira21/tkd-coach-android/releases/latest), fora do histórico do código-fonte.
 
-1. No telemóvel Android, descarregar `TKD-Coach-v65.apk`.
+1. No telemóvel Android, descarregar `Alpha-TKD-Pro-v66.apk`.
 2. Abrir o ficheiro transferido.
 3. Se o Android pedir autorização, permitir temporariamente a instalação de aplicações desta fonte.
 4. Escolher **Instalar** ou **Atualizar**.
@@ -20,7 +20,7 @@ A versão Android mais recente é a **65.0** (`versionCode 10070`), para Android
 SHA-256 da APK publicada:
 
 ```text
-AABC3B9390E6859284DAC0DE5D6143E7663081D68C85B099A8089E9BE8ED7290
+3DCB8AD056F0CF18352BC42F29E7B81B1B8D2193AC0FD0BDDBDF9C8A07DB29DA
 ```
 
 > Esta é uma distribuição direta para teste. O Android pode avisar que a aplicação não veio da Google Play porque a instalação é feita através de uma APK.
@@ -28,14 +28,14 @@ AABC3B9390E6859284DAC0DE5D6143E7663081D68C85B099A8089E9BE8ED7290
 ## Como funciona
 
 <p align="center">
-  <img src="docs/screenshots/tkd-coach-v63-showcase.png" width="100%" alt="TKD Coach numa sessão móvel e numa sequência visual de exercícios" />
+  <img src="docs/screenshots/tkd-coach-v63-showcase.png" width="100%" alt="Alpha TKD Pro numa sessão móvel e numa sequência visual de exercícios" />
 </p>
 
 A sessão ativa mostra o exercício atual, o tempo desse exercício, a posição no treino e o tempo total restante. As imagens podem permanecer visíveis como referência; os controlos inferiores permitem recuar, pausar, consultar dicas e avançar. Exercícios compostos podem apresentar cada movimento pela ordem da sequência.
 
 ## O problema que resolve
 
-Planear um treino variado implica normalmente consultar várias listas, temporizadores, fotografias e vídeos. A TKD Coach reúne essas peças numa única aplicação: escolhe-se ou constrói-se uma sessão, define-se a ordem e os tempos e o telemóvel acompanha todo o treino sem exigir navegação constante.
+Planear um treino variado implica normalmente consultar várias listas, temporizadores, fotografias e vídeos. A Alpha TKD Pro reúne essas peças numa única aplicação: escolhe-se ou constrói-se uma sessão, define-se a ordem e os tempos e o telemóvel acompanha todo o treino sem exigir navegação constante.
 
 ## Principais funcionalidades
 

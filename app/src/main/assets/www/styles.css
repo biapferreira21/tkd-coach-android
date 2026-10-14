@@ -2287,11 +2287,13 @@ body.training-active .session-timer{
 .custom-order-actions{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .custom-order-actions button{min-width:0;min-height:36px;padding:3px;border:1px solid rgba(40,54,46,.55);border-radius:4px;background:#e4e8df;color:var(--green-dark);font-size:18px;font-weight:900}
 .custom-order-actions button:disabled{opacity:.28}
+.custom-order-actions{grid-template-columns:repeat(3,1fr)}
+.custom-order-actions .remove-custom-exercise{border-color:#d8a39a;background:#f8e1dc;color:#9f321f}
 @media(max-width:620px){
   .custom-order-panel{padding:9px}
   .custom-order-heading{align-items:start}.custom-order-heading h3{font-size:20px}.custom-order-heading>small{max-width:110px}
   .custom-order-row{
-    grid-template-columns:30px 14px 54px minmax(0,1fr) 68px;
+    grid-template-columns:30px 14px 54px minmax(0,1fr) 96px;
     grid-template-areas:"position grip thumb copy actions" "position grip thumb duration actions";
     gap:4px 6px;
     padding:6px;
@@ -2303,3 +2305,16 @@ body.training-active .session-timer{
   .custom-order-duration input{min-height:32px;padding:4px}
   .custom-order-actions{grid-area:actions}.custom-order-actions button{min-height:31px;font-size:16px}
 }
+
+/* v66 · edição, duplicação e preparação do exercício seguinte */
+.created-session-actions{grid-template-rows:repeat(6,1fr)}
+.duplicate-created-session{border:0;border-radius:12px;padding:9px 12px;background:#dcfce7;color:#166534;font:900 12px/1 inherit}
+.rest-next-preview{display:grid;gap:2px;margin:7px auto 0;max-width:620px;padding:8px 12px;border:1px solid rgba(39,82,65,.38);border-radius:7px;background:#eef5ed;text-align:left}
+.rest-next-preview[hidden]{display:none}
+.rest-next-preview span{color:var(--red);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.rest-next-preview strong{color:var(--ink);font:700 18px/1.15 Georgia,"Times New Roman",serif}
+.rest-next-preview small{color:var(--muted);font-size:10px;font-weight:800}
+body.training-active .rest-next-preview{margin-top:3px;padding:5px 8px}
+body.training-active .rest-next-preview strong{font-size:14px}
+body.training-active .rest-next-preview small{font-size:8px}
+@media(max-width:520px){.duplicate-created-session{min-height:42px;padding-inline:5px}.created-session-actions{grid-template-columns:repeat(3,1fr);grid-template-rows:auto}}
